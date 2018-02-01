@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 step([$class: 'WsCleanup'])
-            git  poll: true,  url: 'ec2-54-95-48-23.ap-northeast-1.compute.amazonaws.com:5000', branch: 'master'
+            git  poll: true,  url: 'https://github.com/dmall-k8s-microservice/dmall-inventory-service.git', branch: 'master'
             }
                 
         }
