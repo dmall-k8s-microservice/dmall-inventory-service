@@ -36,7 +36,7 @@ pipeline {
                 stage('Findbugs') {
                         agent none
                         steps {
-                            echo 'Findbugs is finished.'
+                            sh './gradlew sonarqube -Dsonar.host.url=http://sonar.mycompany.com'
                         }
                     }
                 stage('Checkstyle') {
@@ -67,5 +67,5 @@ pipeline {
                 }
             }
         }
-  }  
+    }
 }
