@@ -3,6 +3,3 @@ spring:
     name: inventory-service
 server:
   port: 8080
-  # cloud:
-  #   config:
-  #     uri: http://config-server:8888
