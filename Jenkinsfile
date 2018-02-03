@@ -33,12 +33,12 @@ pipeline {
 
         stage('Check') {
             parallel {
-                stage('Findbugs') {
-                        agent none
-                        steps {
-                            sh './gradlew sonarqube -Dsonar.host.url=http://sonar.mycompany.com'
-                        }
-                    }
+                // stage('Findbugs') {
+                //     agent none
+                //     steps {
+                //         sh './gradlew sonarqube -Dsonar.host.url=http://sonar.mycompany.com'
+                //     }
+                // }
                 stage('Checkstyle') {
                         agent none
                         steps {
