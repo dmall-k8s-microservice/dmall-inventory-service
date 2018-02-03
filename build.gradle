@@ -25,6 +25,7 @@ apply plugin: 'java'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.sonarqube'
 apply plugin: 'jacoco'
+apply plugin: 'checkstyle'
 
 
 jar {
@@ -58,13 +59,12 @@ targetCompatibility = 1.8
 
 
 task createWrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '4.4.1'
 }
 
-sonarqube {
-    properties {
-        property "sonar.buildbreaker.skip" , "false"
-    }
+checkstyle {
+    toolVersion "7.6.1"
 }
+
 
 
