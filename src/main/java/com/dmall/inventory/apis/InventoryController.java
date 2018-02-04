@@ -27,9 +27,9 @@ public class InventoryController {
     public InventoryController() throws ParseException {
 
         this.inventories = Arrays.asList(
-            new Inventory("p001", "坚果手机", 10),
+            new Inventory("p001", "坚果手机pro2", 10),
             new Inventory("p002", "坚果手机pro", 10),
-            new Inventory("p004", "Xiaomi 5 plus", 8),
+            new Inventory("p004", "坚果手机", 8),
             new Inventory("p003", "Oppo R11", 10));
     }
 
