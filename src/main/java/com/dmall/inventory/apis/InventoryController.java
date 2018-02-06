@@ -1,6 +1,8 @@
 package com.dmall.inventory.apis;
 
 import com.dmall.inventory.model.Inventory;
+import com.dmall.inventory.services.InventoryService;
+import com.dmall.inventory.services.InventoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,25 +26,11 @@ public class InventoryController {
     private List<Inventory> inventories = null;
 
     @Autowired
-    public InventoryController() throws ParseException {
-
-        this.inventories = Arrays.asList(
-            new Inventory("p001", "坚果手机pro2", 10),
-            new Inventory("p002", "坚果手机pro", 10),
-            new Inventory("p004", "坚果手机", 8),
-            new Inventory("p003", "Oppo R11", 10));
-    }
+    private InventoryService inventoryService;
 
     @GetMapping
     public List<Inventory> getInventories() {
 
-        return inventories;
-    }
-
-    @RequestMapping(value = "/{inventoryId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public Inventory getDoctorByDoctorId(@PathVariable("inventoryId") final String inventoryId) {
-        Optional<Inventory> doctor = inventories.stream().filter(c -> Objects.equals(c.getInventoryId(), inventoryId)).findAny();
-
-        return doctor.isPresent() ? doctor.get() : null;
+        return inventoryService.getInventories();
     }
 }

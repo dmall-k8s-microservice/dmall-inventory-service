@@ -8,16 +8,14 @@ import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 import com.dmall.inventory.model.Inventory;
-import com.dmall.inventory.services.InventoryService;
+import com.dmall.inventory.services.InventoryServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.restdriver.clientdriver.ClientDriverRule;
 import org.junit.ClassRule;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,8 +38,8 @@ public class InventoryControllerContractTest {
     @State("The products in Review service are ready")
     public void shouldGetRatings(Map<String, Object> params) throws JsonProcessingException {
 
-        InventoryService inventoryService = new InventoryService();
-        final List<Inventory> inventories = inventoryService.getInventories();
+        InventoryServiceImpl inventoryServiceImpl = new InventoryServiceImpl();
+        final List<Inventory> inventories = inventoryServiceImpl.getInventories();
         ObjectMapper objectMapper = new ObjectMapper();
         //Set pretty printing of json
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);

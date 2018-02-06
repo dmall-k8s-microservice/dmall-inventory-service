@@ -1,5 +1,7 @@
 package com.dmall.inventory.apis;
 
+import com.dmall.inventory.services.InventoryService;
+import com.dmall.inventory.services.InventoryServiceImpl;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -11,8 +13,7 @@ public class InventoryControllerTest {
 
     @Test
     public void getInventories() throws ParseException {
-        InventoryController inventoryController = new InventoryController();
-
-        assertThat(inventoryController.getInventories().size(), is(4));
+        InventoryService service = new InventoryServiceImpl();
+        assertThat(service.getInventories().size(), is(4));
     }
 }
