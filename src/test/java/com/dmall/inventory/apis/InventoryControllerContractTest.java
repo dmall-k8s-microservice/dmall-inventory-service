@@ -1,8 +1,10 @@
 package com.dmall.inventory.apis;
 
+import au.com.dius.pact.provider.PactVerifyProvider;
 import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;
+import au.com.dius.pact.provider.junit.loader.PactBroker;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
 import au.com.dius.pact.provider.junit.target.HttpTarget;
 import au.com.dius.pact.provider.junit.target.Target;
@@ -27,7 +29,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(PactRunner.class)
 @Provider("inventory_service")
-@PactFolder("src/test/resources")
+@PactBroker(host = "52.68.49.226", port = "80")
 public class InventoryControllerContractTest {
     @ClassRule
     public static final ClientDriverRule embeddedService = new ClientDriverRule(8332);
@@ -41,12 +43,11 @@ public class InventoryControllerContractTest {
         InventoryServiceImpl inventoryServiceImpl = new InventoryServiceImpl();
         final List<Inventory> inventories = inventoryServiceImpl.getInventories();
         ObjectMapper objectMapper = new ObjectMapper();
-        //Set pretty printing of json
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
         embeddedService.addExpectation(
                 onRequestTo("/inventories").withParams(params)
-                , giveResponse(objectMapper.writeValueAsString(inventories), "application/json;charset=UTF-8")
+                , giveResponse(objectMapper.writeValueAsString(inventories), "application/json")
         );
     }
 }

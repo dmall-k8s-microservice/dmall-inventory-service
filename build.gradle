@@ -15,6 +15,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.bootVersion}"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1"
+        classpath 'au.com.dius:pact-jvm-provider-gradle_2.12:3.5.12'
     }
 }
 
@@ -25,6 +26,7 @@ apply plugin: 'java'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.sonarqube'
 apply plugin: 'jacoco'
+apply plugin: 'au.com.dius.pact'
 //apply plugin: 'checkstyle'
 
 
@@ -69,6 +71,15 @@ sonarqube {
     properties {
         property "sonar.host.url", "http://ec2-13-114-52-20.ap-northeast-1.compute.amazonaws.com:30090"
     }
+}
+
+pact {
+    serviceProviders {
+        inventory_service {
+            hasPactsFromPactBroker('http://localhost')
+        }
+    }
+
 }
 
 
