@@ -26,12 +26,12 @@ pipeline {
                         echo 'Checkstyle is finished.'
                     }
                 }
-                stage('PMD') {
-                        agent none
-                        steps {
-                            sh './gradlew sonarqube'
-                        }
+                stage('Sonar') {
+                    agent none
+                    steps {
+                        sh './gradlew sonarqube'
                     }
+                }
             }
         }
 
