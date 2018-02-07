@@ -73,14 +73,5 @@ sonarqube {
     }
 }
 
-pact {
-    serviceProviders {
-        inventory_service {
-            hasPactsFromPactBroker('http://localhost')
-        }
-    }
-
-}
-
 
 
