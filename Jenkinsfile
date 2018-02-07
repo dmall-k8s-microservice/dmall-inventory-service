@@ -11,19 +11,6 @@ pipeline {
     }
     
     stages {
-        stage('repo clean up'){
-            steps {
-                step([$class: 'WsCleanup'])
-            }
-        }
-
-        stage('Checkout') {
-            steps {
-                step([$class: 'WsCleanup'])
-            git  poll: true,  url: 'https://github.com/dmall-k8s-microservice/dmall-inventory-service.git', branch: 'master'
-            }
-                
-        }
 
         stage('Build') {
             steps{
@@ -33,22 +20,16 @@ pipeline {
 
         stage('Check') {
             parallel {
-                // stage('Findbugs') {
-                //     agent none
-                //     steps {
-                //         sh './gradlew sonarqube -Dsonar.host.url=http://sonar.mycompany.com'
-                //     }
-                // }
                 stage('Checkstyle') {
-                        agent none
-                        steps {
-                            echo 'Checkstyle is finished.'
-                        }
+                    agent none
+                    steps {
+                        echo 'Checkstyle is finished.'
                     }
+                }
                 stage('PMD') {
                         agent none
                         steps {
-                            echo 'PMD is finished.'
+                            sh './gradlew sonarqube'
                         }
                     }
             }
