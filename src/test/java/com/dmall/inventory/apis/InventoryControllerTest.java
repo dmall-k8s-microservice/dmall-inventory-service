@@ -16,6 +16,6 @@ public class InventoryControllerTest {
         InventoryService service = new InventoryServiceImpl();
 
         Inventory result = service.getInventoriesById("p003");
-        assertThat(result.getName(), is("Oppo R11"));
+        assertThat(result.getName(), is("Oppo R12"));
     }
 }
