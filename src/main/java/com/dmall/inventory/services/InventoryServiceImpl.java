@@ -11,10 +11,10 @@ import java.util.List;
 public class InventoryServiceImpl implements InventoryService {
 
     private List<Inventory> inventories = Arrays.asList(
-            new Inventory("p001", "坚果手机pro3", 10),
-            new Inventory("p002", "坚果手机pro", 10),
-            new Inventory("p004", "坚果手机", 8),
-            new Inventory("p003", "Oppo R12", 10));
+            new Inventory("p0001", "坚果手机pro3", 10),
+            new Inventory("p0002", "坚果手机pro", 10),
+            new Inventory("p0004", "坚果手机", 8),
+            new Inventory("p0003", "Oppo R12", 10));
 
     @Override
     public List<Inventory> getInventories() {

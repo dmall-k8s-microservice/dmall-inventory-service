@@ -15,7 +15,7 @@ public class InventoryControllerTest {
     public void getInventoryById() throws ParseException {
         InventoryService service = new InventoryServiceImpl();
 
-        Inventory result = service.getInventoriesById("p003");
+        Inventory result = service.getInventoriesById("p0003");
         assertThat(result.getName(), is("Oppo R12"));
     }
 }
