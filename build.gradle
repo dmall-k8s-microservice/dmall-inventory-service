@@ -69,7 +69,7 @@ task createWrapper(type: Wrapper) {
 
 sonarqube {
     properties {
-        property "sonar.host.url", "http://sonar-service:30090"
+        property "sonar.host.url", "http://sonar-service:9000"
         property "sonar.projectName", "linwenjun-dmall-inventory-service"
     }
 }
