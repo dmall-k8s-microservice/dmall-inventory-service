@@ -28,7 +28,7 @@ pipeline {
                 stage('Sonar') {
                     agent none
                     steps {
-                        echo 'sonarqube'
+                        sh './gradlew sonarqube'
                     }
                 }
             }
